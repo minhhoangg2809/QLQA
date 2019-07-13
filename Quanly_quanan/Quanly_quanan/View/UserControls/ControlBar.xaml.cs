@@ -24,5 +24,12 @@ namespace Quanly_quanan.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void btn_user_Click(object sender, RoutedEventArgs e)
+        {
+            View.ThongtinTaikhoan tt = new View.ThongtinTaikhoan();
+            tt.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            tt.ShowDialog();
+        }
     }
 }

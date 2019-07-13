@@ -524,7 +524,7 @@ namespace Quanly_quanan.ViewModel
 
             #region Login
 
-            LoadLoginform_Command = new RelayCommand<object>(p =>
+            LoadLoginform_Command = new RelayCommand<Window>(p =>
             {
                 return true;
             }, p =>
@@ -549,6 +549,14 @@ namespace Quanly_quanan.ViewModel
                      LoginUsername = Src.MyStaticMethods.Base64Decode(lines[lines.Length - 3]);
                      LoginPass = Src.MyStaticMethods.Base64Decode(lines[lines.Length - 2]);
                      RememberChecked = true;
+                 }
+
+                 foreach (PasswordBox pb in Src.MyStaticMethods.FindVisualChildren<PasswordBox>(p))
+                 {
+                     if (pb.Name == "pb_login")
+                     {
+                         pb.Password = LoginPass;
+                     }
                  }
              });
 

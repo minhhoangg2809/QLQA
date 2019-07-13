@@ -44,14 +44,8 @@
         </ListViewItem>
         <ListViewItem Height="60" Uid="5"  Cursor="Hand">
             <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="10"/>
-                <TextBlock Text="Hệ thống" VerticalAlignment="Center"  Margin="20 10"/>
-            </StackPanel>
-        </ListViewItem>
-        <ListViewItem Height="60" Uid="6" Cursor="Hand">
-            <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="AccountBox" Height="25" Width="25" Margin="10"/>
-                <TextBlock Text="Tài khoản" VerticalAlignment="Center"  Margin="20 10"/>
+                <TextBlock Text="Quản trị" VerticalAlignment="Center"  Margin="20 10"/>
             </StackPanel>
         </ListViewItem>
     </ListView>

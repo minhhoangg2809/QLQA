@@ -75,13 +75,6 @@ namespace Quanly_quanan.ViewModel
                     {
                         break;
                     }
-                case 6:
-                    {
-                        View.ThongtinTaikhoan tt = new View.ThongtinTaikhoan();
-                        tt.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                        tt.ShowDialog();
-                    }
-                    break;
                 default:
                     break;
             }

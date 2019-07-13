@@ -20,6 +20,16 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btn_user"
+                    Width="25" Height="25"
+                    Background="White"
+                    Foreground="#FF5C99D6"
+                    BorderBrush="#FF5C99D6"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="Thông tin tài khoản"
+                    Content="{MaterialDesign:PackIcon Kind=Account}"
+                    MaterialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Click="btn_user_Click"/>
             <Button Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="Black"

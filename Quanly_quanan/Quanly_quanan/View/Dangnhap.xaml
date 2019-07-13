@@ -12,11 +12,13 @@
         AllowsTransparency="True" 
         Background="Transparent" 
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource vm_taikhoan}">
+        DataContext="{StaticResource vm_taikhoan}"
+        x:Name="wd_dangnhap">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadLoginform_Command}"/>
+            <i:InvokeCommandAction Command="{Binding LoadLoginform_Command}"
+                                   CommandParameter="{Binding ElementName=wd_dangnhap}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
