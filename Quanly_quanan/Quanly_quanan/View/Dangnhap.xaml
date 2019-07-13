@@ -1,0 +1,96 @@
+﻿<Window x:Class="Quanly_quanan.View.Dangnhap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quanly_quanan"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Đăng nhập" Height="450" Width="650" 
+        ResizeMode="NoResize" WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent" 
+        WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource vm_taikhoan}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadLoginform_Command}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
+        <Image Source="/Src/img/food2.jpg" Margin="310,0,0,0" Stretch="UniformToFill"/>
+        <Rectangle Margin="310,0,0,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#CC935E12" Offset="1"/>
+                    <GradientStop Color="#CCEA4646"/>
+                    <GradientStop Color="#CCB89128" Offset="0.566"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Margin="20,10,290,10" Orientation="Vertical">
+            <Label Content="Đăng nhập" FontFamily="Segoe UI Black" FontSize="24" Margin="0,10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <StackPanel Margin="0,15" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Account" Width="20" Height="20" VerticalAlignment="Center" Foreground="#707070"/>
+                <TextBlock Width="5"/>
+                <TextBox x:Name="tb_login" TabIndex="0" FontSize="15"
+                    materialDesign:HintAssist.Hint="Tên đăng nhập" Width="250" Margin="5"
+                    Text="{Binding LoginUsername,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key"  Width="20" Height="20" VerticalAlignment="Center" Foreground="#707070"/>
+                <TextBlock Width="5"/>
+                <PasswordBox x:Name="pb_login" TabIndex="1" FontSize="15"
+                             materialDesign:HintAssist.Hint="Mật khẩu" Width="250" Margin="5">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction Command="{Binding GetPassLogin_Command}"
+                                                   CommandParameter="{Binding ElementName=pb_login}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
+            </StackPanel>
+            <Grid>
+                <CheckBox x:Name="RememberCheck" Cursor="Pen" 
+                          Background="#FF5C99D6"
+                          Content="Ghi nhớ tài khoản" Margin="5,10" 
+                          Foreground="#707070"
+                          IsChecked="{Binding RememberChecked,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            </Grid>
+            <TextBlock Height="10"/>
+            <Button x:Name="btn_login" IsDefault="True" 
+                    Margin="-60 0 0 0"
+                    Content="ĐĂNG NHẬP" 
+                    FontFamily="Impact" FontSize="18" Width="160" 
+                    Background="#FF307CD6" BorderBrush="#FF307CD6"
+                    Command="{Binding Login_Command}"
+                    CommandParameter="{Binding ElementName=btn_login}">
+                
+            </Button>
+            <TextBlock Height="10"/>
+            <Button Margin="-60 0 0 0"
+                    Content="THOÁT" FontFamily="Impact" 
+                    FontSize="18" Width="160" 
+                    Background="Orange" 
+                    BorderBrush="Orange"
+                    Command="{Binding CloseLoginform_Command}"/>
+        </StackPanel>
+        <StackPanel Margin="310,50,0,50">
+            <TextBlock Text="Bem Vindo" Foreground="White" HorizontalAlignment="Center" FontSize="48" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
+            <TextBlock Text="Tornar o impossível possível, o possível fácil e o fácil elegante" Foreground="White" HorizontalAlignment="Center" Width="280" FontSize="24" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Center" Margin="0,50,0,0"/>
+            <TextBlock Text="Feldenkrais" Foreground="White" FontSize="18" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Right" Margin="10"/>
+        </StackPanel>
+
+        <materialDesign:Snackbar HorizontalAlignment="Center"
+                  IsActive="{Binding IsActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+            <materialDesign:SnackbarMessage
+                Content="{Binding Message,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                ActionContent="OK" 
+                ActionCommand="{Binding CloseAlert_Command}"/>
+        </materialDesign:Snackbar>
+    </Grid>
+</Window>

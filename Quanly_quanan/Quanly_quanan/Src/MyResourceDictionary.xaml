@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Quanly_quanan"
+                    xmlns:viewmodel="clr-namespace:Quanly_quanan.ViewModel">
+    <viewmodel:ControlBar_ViewModel x:Key="vm_controlbar"></viewmodel:ControlBar_ViewModel>
+    <viewmodel:Menu_ViewModel x:Key="vm_menu"></viewmodel:Menu_ViewModel>
+    <viewmodel:Trangchinh_ViewModel x:Key="vm_main"></viewmodel:Trangchinh_ViewModel>
+    <viewmodel:Danhmuc_ViewModel x:Key="vm_danhmuc"></viewmodel:Danhmuc_ViewModel>
+    <viewmodel:Doan_ViewModel x:Key="vm_doan"></viewmodel:Doan_ViewModel>
+    <viewmodel:Ban_ViewModel x:Key="vm_banan"></viewmodel:Ban_ViewModel>
+    <viewmodel:Taikhoan_ViewModel x:Key="vm_taikhoan"></viewmodel:Taikhoan_ViewModel>
+</ResourceDictionary>

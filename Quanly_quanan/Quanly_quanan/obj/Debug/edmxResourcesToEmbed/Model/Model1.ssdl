@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Quanly_quananModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ban">
+    <Key>
+      <PropertyRef Name="ma_ban" />
+    </Key>
+    <Property Name="ma_ban" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ten_ban" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tinhtrang" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chitiethoadon">
+    <Key>
+      <PropertyRef Name="ma_cthd" />
+    </Key>
+    <Property Name="ma_cthd" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ma_sanpham" Type="varchar" MaxLength="10" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+    <Property Name="ma_hoadon" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Danhmuc">
+    <Key>
+      <PropertyRef Name="ma_danhmuc" />
+    </Key>
+    <Property Name="ma_danhmuc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ten_danhmuc" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="mota_danhmuc" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Hoadon">
+    <Key>
+      <PropertyRef Name="ma_hoadon" />
+    </Key>
+    <Property Name="ma_hoadon" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ngay_dat" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ngay_thanhtoan" Type="nvarchar" MaxLength="255" />
+    <Property Name="tinhtrang" Type="bit" Nullable="false" />
+    <Property Name="khachhang" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sodienthoai_khachhang" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ma_taikhoan" Type="varchar" MaxLength="255" />
+    <Property Name="ma_ban" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Quyentruycap">
+    <Key>
+      <PropertyRef Name="ma_quyen" />
+    </Key>
+    <Property Name="ma_quyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten_quyen" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sanpham">
+    <Key>
+      <PropertyRef Name="ma_sanpham" />
+    </Key>
+    <Property Name="ma_sanpham" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ten_sanpham" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="mota_sanpham" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dongia" Type="float" Nullable="false" />
+    <Property Name="ma_danhmuc" Type="varchar" MaxLength="10" />
+    <Property Name="tendonvi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Taikhoan">
+    <Key>
+      <PropertyRef Name="ma_taikhoan" />
+    </Key>
+    <Property Name="ma_taikhoan" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ten_dangnhap" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="matkhau" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ma_quyen" Type="int" />
+    <Property Name="tennhanvien" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sodienthoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_Chitiethoadon_Hoadon">
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Chitiethoadon" Type="Self.Chitiethoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hoadon">
+        <PropertyRef Name="ma_hoadon" />
+      </Principal>
+      <Dependent Role="Chitiethoadon">
+        <PropertyRef Name="ma_hoadon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Chitiethoadon_Sanpham">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="0..1" />
+    <End Role="Chitiethoadon" Type="Self.Chitiethoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="ma_sanpham" />
+      </Principal>
+      <Dependent Role="Chitiethoadon">
+        <PropertyRef Name="ma_sanpham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hoadon_Ban">
+    <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ban">
+        <PropertyRef Name="ma_ban" />
+      </Principal>
+      <Dependent Role="Hoadon">
+        <PropertyRef Name="ma_ban" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Sanpham_Danhmuc">
+    <End Role="Danhmuc" Type="Self.Danhmuc" Multiplicity="0..1" />
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Danhmuc">
+        <PropertyRef Name="ma_danhmuc" />
+      </Principal>
+      <Dependent Role="Sanpham">
+        <PropertyRef Name="ma_danhmuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Taikhoan_matk">
+    <End Role="Taikhoan" Type="Self.Taikhoan" Multiplicity="0..1" />
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Taikhoan">
+        <PropertyRef Name="ma_taikhoan" />
+      </Principal>
+      <Dependent Role="Hoadon">
+        <PropertyRef Name="ma_taikhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Taikhoan_Quyentruycap">
+    <End Role="Quyentruycap" Type="Self.Quyentruycap" Multiplicity="0..1" />
+    <End Role="Taikhoan" Type="Self.Taikhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyentruycap">
+        <PropertyRef Name="ma_quyen" />
+      </Principal>
+      <Dependent Role="Taikhoan">
+        <PropertyRef Name="ma_quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Quanly_quananModelStoreContainer">
+    <EntitySet Name="Ban" EntityType="Self.Ban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chitiethoadon" EntityType="Self.Chitiethoadon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Danhmuc" EntityType="Self.Danhmuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hoadon" EntityType="Self.Hoadon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quyentruycap" EntityType="Self.Quyentruycap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sanpham" EntityType="Self.Sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Taikhoan" EntityType="Self.Taikhoan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Chitiethoadon_Hoadon" Association="Self.fk_Chitiethoadon_Hoadon">
+      <End Role="Hoadon" EntitySet="Hoadon" />
+      <End Role="Chitiethoadon" EntitySet="Chitiethoadon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Chitiethoadon_Sanpham" Association="Self.fk_Chitiethoadon_Sanpham">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="Chitiethoadon" EntitySet="Chitiethoadon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hoadon_Ban" Association="Self.fk_Hoadon_Ban">
+      <End Role="Ban" EntitySet="Ban" />
+      <End Role="Hoadon" EntitySet="Hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Sanpham_Danhmuc" Association="Self.fk_Sanpham_Danhmuc">
+      <End Role="Danhmuc" EntitySet="Danhmuc" />
+      <End Role="Sanpham" EntitySet="Sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Taikhoan_matk" Association="Self.fk_Taikhoan_matk">
+      <End Role="Taikhoan" EntitySet="Taikhoan" />
+      <End Role="Hoadon" EntitySet="Hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Taikhoan_Quyentruycap" Association="Self.FK_Taikhoan_Quyentruycap">
+      <End Role="Quyentruycap" EntitySet="Quyentruycap" />
+      <End Role="Taikhoan" EntitySet="Taikhoan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

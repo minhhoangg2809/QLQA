@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Quanly_quananModelStoreContainer" CdmEntityContainer="Quanly_quananEntities">
+    <EntitySetMapping Name="Bans">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Ban">
+        <MappingFragment StoreEntitySet="Ban">
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+          <ScalarProperty Name="ten_ban" ColumnName="ten_ban" />
+          <ScalarProperty Name="ma_ban" ColumnName="ma_ban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chitiethoadons">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Chitiethoadon">
+        <MappingFragment StoreEntitySet="Chitiethoadon">
+          <ScalarProperty Name="ma_hoadon" ColumnName="ma_hoadon" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="ma_sanpham" ColumnName="ma_sanpham" />
+          <ScalarProperty Name="ma_cthd" ColumnName="ma_cthd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Danhmucs">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Danhmuc">
+        <MappingFragment StoreEntitySet="Danhmuc">
+          <ScalarProperty Name="mota_danhmuc" ColumnName="mota_danhmuc" />
+          <ScalarProperty Name="ten_danhmuc" ColumnName="ten_danhmuc" />
+          <ScalarProperty Name="ma_danhmuc" ColumnName="ma_danhmuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hoadons">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Hoadon">
+        <MappingFragment StoreEntitySet="Hoadon">
+          <ScalarProperty Name="ma_ban" ColumnName="ma_ban" />
+          <ScalarProperty Name="ma_taikhoan" ColumnName="ma_taikhoan" />
+          <ScalarProperty Name="sodienthoai_khachhang" ColumnName="sodienthoai_khachhang" />
+          <ScalarProperty Name="khachhang" ColumnName="khachhang" />
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+          <ScalarProperty Name="ngay_thanhtoan" ColumnName="ngay_thanhtoan" />
+          <ScalarProperty Name="ngay_dat" ColumnName="ngay_dat" />
+          <ScalarProperty Name="ma_hoadon" ColumnName="ma_hoadon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quyentruycaps">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Quyentruycap">
+        <MappingFragment StoreEntitySet="Quyentruycap">
+          <ScalarProperty Name="ten_quyen" ColumnName="ten_quyen" />
+          <ScalarProperty Name="ma_quyen" ColumnName="ma_quyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sanphams">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Sanpham">
+        <MappingFragment StoreEntitySet="Sanpham">
+          <ScalarProperty Name="tendonvi" ColumnName="tendonvi" />
+          <ScalarProperty Name="ma_danhmuc" ColumnName="ma_danhmuc" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+          <ScalarProperty Name="mota_sanpham" ColumnName="mota_sanpham" />
+          <ScalarProperty Name="ten_sanpham" ColumnName="ten_sanpham" />
+          <ScalarProperty Name="ma_sanpham" ColumnName="ma_sanpham" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Quanly_quananModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taikhoans">
+      <EntityTypeMapping TypeName="Quanly_quananModel.Taikhoan">
+        <MappingFragment StoreEntitySet="Taikhoan">
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="tennhanvien" ColumnName="tennhanvien" />
+          <ScalarProperty Name="ma_quyen" ColumnName="ma_quyen" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="ten_dangnhap" ColumnName="ten_dangnhap" />
+          <ScalarProperty Name="ma_taikhoan" ColumnName="ma_taikhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
