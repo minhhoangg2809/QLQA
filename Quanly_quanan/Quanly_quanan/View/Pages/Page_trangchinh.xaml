@@ -69,7 +69,7 @@
                         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
                             <TextBox Width="250"
                                      Margin="5"
-                                     IsEnabled="False"
+                                     IsReadOnly="True"
                                      materialDesign:HintAssist.Hint="Tên bàn"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      Text="{Binding SelectedTable.ten_ban,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
