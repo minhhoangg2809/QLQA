@@ -50,7 +50,7 @@
                             BorderBrush="{x:Null}"
                             BorderThickness="0"
                             Background="Transparent"
-                            Content="{materialDesign:PackIcon Kind=CloseOutline, Size=30}" 
+                            Content="{materialDesign:PackIcon Kind=Close, Size=30}" 
                             Width="60" Height="auto"
                             ToolTip="Đóng"
                             Click="Button_Click"/>

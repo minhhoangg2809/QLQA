@@ -268,6 +268,16 @@ namespace Quanly_quanan.ViewModel
                  SDanhmuc = null;
                  SMonan = null;
                  Soluong = "0";
+
+                 if (Selected_Hoadon != null)
+                 {
+                     List_FoodinBill = new ObservableCollection<Model.Chitiethoadon>(Model.DataProvider.Ins.DB.Chitiethoadons.Where(x => x.ma_hoadon == Selected_Hoadon.ma_hoadon));
+                 }
+                 else
+                 {
+                     List_FoodinBill = new ObservableCollection<Model.Chitiethoadon>();
+                 }
+
              });
 
             #endregion
