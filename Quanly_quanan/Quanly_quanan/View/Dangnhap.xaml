@@ -3,17 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Quanly_quanan"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Đăng nhập" Height="450" Width="650" 
-        ResizeMode="NoResize" WindowStyle="None" 
-        AllowsTransparency="True" 
-        Background="Transparent" 
-        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Form1" 
+        Height="500" Width="900"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
         DataContext="{StaticResource vm_taikhoan}"
         x:Name="wd_dangnhap">
+
+    <Window.Resources>
+        <Style x:Key="RoundButton" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Opacity" Value="0.6"></Setter>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="Foreground" Value="white"></Setter>
+            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+            <Setter Property="Opacity" Value="1"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}"
+                                            BorderThickness="0" BorderBrush="{TemplateBinding Foreground}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -23,72 +51,147 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
-        <Image Source="/Src/img/food2.jpg" Margin="310,0,0,0" Stretch="UniformToFill"/>
-        <Rectangle Margin="310,0,0,0">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#CC935E12" Offset="1"/>
-                    <GradientStop Color="#CCEA4646"/>
-                    <GradientStop Color="#CCB89128" Offset="0.566"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <StackPanel Margin="20,10,290,10" Orientation="Vertical">
-            <Label Content="Đăng nhập" FontFamily="Segoe UI Black" FontSize="24" Margin="0,10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <StackPanel Margin="0,15" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Account" Width="20" Height="20" VerticalAlignment="Center" Foreground="#707070"/>
-                <TextBlock Width="5"/>
-                <TextBox x:Name="tb_login" TabIndex="0" FontSize="15"
-                    materialDesign:HintAssist.Hint="Tên đăng nhập" Width="250" Margin="5"
-                    Text="{Binding LoginUsername,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Key"  Width="20" Height="20" VerticalAlignment="Center" Foreground="#707070"/>
-                <TextBlock Width="5"/>
-                <PasswordBox x:Name="pb_login" TabIndex="1" FontSize="15"
-                             materialDesign:HintAssist.Hint="Mật khẩu" Width="250" Margin="5">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="PasswordChanged">
-                            <i:InvokeCommandAction Command="{Binding GetPassLogin_Command}"
-                                                   CommandParameter="{Binding ElementName=pb_login}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </PasswordBox>
-            </StackPanel>
+        <Grid>
+            <Rectangle RadiusY="8" RadiusX="8">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF28BAF0" Offset="0.942"/>
+                        <GradientStop Color="#FF65C7E1" Offset="0.049"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
             <Grid>
-                <CheckBox x:Name="RememberCheck" Cursor="Pen" 
-                          Background="#FF5C99D6"
-                          Content="Ghi nhớ tài khoản" Margin="5,10" 
-                          Foreground="#707070"
-                          IsChecked="{Binding RememberChecked,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-            </Grid>
-            <TextBlock Height="10"/>
-            <Button x:Name="btn_login" IsDefault="True" 
-                    Margin="-60 0 0 0"
-                    Content="ĐĂNG NHẬP" 
-                    FontFamily="Impact" FontSize="18" Width="160" 
-                    Background="#FF307CD6" BorderBrush="#FF307CD6"
-                    Command="{Binding Login_Command}"
-                    CommandParameter="{Binding ElementName=btn_login}">
-                
-            </Button>
-            <TextBlock Height="10"/>
-            <Button Margin="-60 0 0 0"
-                    Content="THOÁT" FontFamily="Impact" 
-                    FontSize="18" Width="160" 
-                    Background="Orange" 
-                    BorderBrush="Orange"
-                    Command="{Binding CloseLoginform_Command}"/>
-        </StackPanel>
-        <StackPanel Margin="310,50,0,50">
-            <TextBlock Text="Bem Vindo" Foreground="White" HorizontalAlignment="Center" FontSize="48" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
-            <TextBlock Text="Tornar o impossível possível, o possível fácil e o fácil elegante" Foreground="White" HorizontalAlignment="Center" Width="280" FontSize="24" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Center" Margin="0,50,0,0"/>
-            <TextBlock Text="Feldenkrais" Foreground="White" FontSize="18" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Right" Margin="10"/>
-        </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-        <materialDesign:Snackbar HorizontalAlignment="Center"
-                  IsActive="{Binding IsActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                <Grid Grid.Column="0">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="400" Height="400">
+                        <materialDesign:PackIcon Kind="FoodForkDrink" 
+                                             Width="300" 
+                                             Height="300"
+                                             HorizontalAlignment="Center"
+                                             Foreground="White"/>
+                        <TextBlock Height="30"/>
+                        <TextBlock Text="Quản lý quán ăn ABC" 
+                                   Foreground="White"
+                                   Padding="50 0 0 0"
+                                   FontSize="30"
+                                   FontFamily="Segoe Print"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <materialDesign:Card UniformCornerRadius="6" 
+                                     Height="400" Width="350"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Background="white"
+                                     materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <materialDesign:Chip Width="300" 
+                                             Opacity="0.8"
+                                             Background="#FFECE9E9">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="5"/>
+                                    <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
+                                    <TextBlock Width="15"/>
+                                    <TextBox  x:Name="tb_username"
+                                              Width="250"
+                                              BorderBrush="{x:Null}"
+                                              BorderThickness="0"
+                                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                              materialDesign:HintAssist.Hint="Tên đăng nhập"
+                                              Text="{Binding LoginUsername,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                </StackPanel>
+                            </materialDesign:Chip>
+
+                            <TextBlock Height="30"/>
+
+                            <materialDesign:Chip Width="300" 
+                                             Opacity="0.8"
+                                             Background="#FFECE9E9">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="5"/>
+                                    <materialDesign:PackIcon Kind="Lock" VerticalAlignment="Center"/>
+                                    <TextBlock Width="15"/>
+                                    <Grid>
+                                        <PasswordBox  x:Name="pb_pass"
+                                        Visibility="Visible"
+                                        Width="250"
+                                        BorderBrush="{x:Null}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:HintAssist.Hint="Mật khẩu">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PasswordChanged">
+                                                    <i:InvokeCommandAction Command="{Binding GetPassLogin_Command}"
+                                                   CommandParameter="{Binding ElementName=pb_pass}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </PasswordBox>
+                                        <TextBox x:Name="tb_pass"
+                                                 Visibility="Hidden"
+                                                 Width="250"
+                                                 BorderBrush="{x:Null}"
+                                                 BorderThickness="0"
+                                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                                 Text="{Binding LoginPass,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </materialDesign:Chip>
+
+                            <TextBlock Height="30"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Background="Gray" Foreground="Gray" Cursor="Pen"
+                                          Content="  Ghi nhớ" Grid.Column="0"
+                                          IsChecked="{Binding RememberChecked,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                    <Label Content="•••" Margin="0 0 10 0" Foreground="Gray"/>
+                                    <ToggleButton 
+                                    IsChecked="False" Background="#FFB3B2B2"
+                                    Checked="ToggleButton_Checked"
+                                    Unchecked="ToggleButton_Unchecked">
+                                        <materialDesign:PackIcon
+                                        Kind="ChevronLeft">
+                                        </materialDesign:PackIcon>
+                                        <materialDesign:ToggleButtonAssist.OnContent>
+                                            <materialDesign:PackIcon
+                                            Kind="ChevronRight" Foreground="White"/>
+                                        </materialDesign:ToggleButtonAssist.OnContent>
+                                    </ToggleButton>
+                                    <Label Content="abc" Margin="0 0 10 0" Foreground="Gray"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <TextBlock Height="30"/>
+
+                            <Button x:Name="btn_login"
+                                Height="40" Style="{DynamicResource RoundButton}" 
+                                Background="#FF2FBAFF" FontSize="15" Content="Đăng nhập" 
+                                Command="{Binding Login_Command}"
+                                CommandParameter="{Binding ElementName=btn_login}"/>
+                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Center" Margin="0 10 0 0" Foreground="Gray" Text="hoặc"/>
+                            <Button  Height="40" Style="{DynamicResource RoundButton}" 
+                                 Background="Orange" FontSize="15" Content="Thoát" Command="{Binding CloseLoginform_Command}"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+        <materialDesign:Snackbar HorizontalAlignment="Center" 
+                                 IsActive="{Binding IsActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+
             <materialDesign:SnackbarMessage
                 Content="{Binding Message,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                 ActionContent="OK" 

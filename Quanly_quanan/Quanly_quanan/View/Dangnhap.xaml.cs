@@ -36,5 +36,21 @@ namespace Quanly_quanan.View
             catch (Exception) {/**/};
         }
 
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            tb_pass.Text = pb_pass.Password;
+
+            pb_pass.Visibility = Visibility.Hidden;
+            tb_pass.Visibility = Visibility.Visible;
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            pb_pass.Password = tb_pass.Text;
+
+            tb_pass.Visibility = Visibility.Hidden;
+            pb_pass.Visibility = Visibility.Visible;
+        }
+
     }
 }

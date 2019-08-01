@@ -55,3 +55,4 @@ E:\C#\App\Quanly_quanan\Quanly_quanan\obj\Debug\View\Dangnhap.g.cs
 E:\C#\App\Quanly_quanan\Quanly_quanan\obj\Debug\View\Dangnhap.baml
 E:\C#\App\Quanly_quanan\Quanly_quanan\obj\Debug\View\ThongtinTaikhoan.g.cs
 E:\C#\App\Quanly_quanan\Quanly_quanan\obj\Debug\View\ThongtinTaikhoan.baml
+E:\C#\App\Quanly_quanan\Quanly_quanan\obj\Debug\Quanly_quanan.csprojResolveAssemblyReference.cache

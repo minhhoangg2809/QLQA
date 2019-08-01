@@ -32,7 +32,9 @@
             <materialDesign:ColorZone
                 Mode="PrimaryDark"
                 Padding="16"
-                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                materialDesign:ShadowAssist.Darken="False"
+                MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

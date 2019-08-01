@@ -553,7 +553,7 @@ namespace Quanly_quanan.ViewModel
 
                  foreach (PasswordBox pb in Src.MyStaticMethods.FindVisualChildren<PasswordBox>(p))
                  {
-                     if (pb.Name == "pb_login")
+                     if (pb.Name == "pb_pass")
                      {
                          pb.Password = LoginPass;
                      }

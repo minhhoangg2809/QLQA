@@ -28,5 +28,10 @@ namespace Quanly_quanan.View
         {
            Close();
         }
+
+        private void ColorZone_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

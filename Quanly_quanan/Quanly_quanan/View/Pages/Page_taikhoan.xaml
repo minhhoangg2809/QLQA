@@ -325,8 +325,8 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Horizontal"  Background="#FF5C99D6">
                         <TextBlock Width="5"/>
-                        <materialDesign:PackIcon Kind="PlusBox" Width="30" Height="30" Foreground="White" VerticalAlignment="Center"/>
-                        <TextBlock FontSize="15" Text="  Thêm mới" VerticalAlignment="Center" Foreground="White"/>
+                        <materialDesign:PackIcon Kind="SecurityAccount" Width="30" Height="30" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBlock FontSize="15" Text="  Thay đổi quyền truy cập" VerticalAlignment="Center" Foreground="White"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
 
